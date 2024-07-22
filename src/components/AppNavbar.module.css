@@ -1,0 +1,8 @@
+.title:hover {
+    cursor: pointer;    /* 왜 작동 안 하는 거지 */
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+}

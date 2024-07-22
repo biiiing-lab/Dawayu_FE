@@ -1,23 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {  } from 'react-bootstrap'; 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import AppNavbar from './components/AppNavbar';
+import Home from './pages/Home.js';
+import Login from './pages/Login.js';
+import SignUp from './pages/SignUp.js';
+import MyPage from './pages/MyPage.js';
+import PostDetail from './pages/PostDetail.js';
+import Edit from './pages/Edit.js';
+import Write from './pages/Write.js';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <AppNavbar/>
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/signUp" element={<SignUp/>}/>
+          <Route path="/myPage" element={<MyPage/>}/>
+          <Route path="/postDetail/:id" element={<PostDetail/>}/> {/* 각 게시글 */}
+          <Route path="/edit" element={<Edit/>}/>
+          <Route path="/write" element={<Write/>}/>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
