@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { clearUser, addLikedPosts, addPosts } from "../store";
+import { addLikedPosts, addPosts } from "../store";
 import styles from './MyPage.module.css';
 import { Tab, Tabs } from 'react-bootstrap';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import LogoutFunc from "../functions/LogoutFunc";
 
 function MyPage(){
     const user = useSelector((state) => state.user);
@@ -12,23 +13,6 @@ function MyPage(){
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const LogoutFunc = () => {  // 로그아웃 함수
-        fetch('/auth/logout', {
-            method: 'POST',
-            headers: {
-                Authorization: localStorage.getItem('token'),
-            },
-        })
-        .then(() => {
-            dispatch(clearUser());
-            localStorage.removeItem("token");
-            alert('로그아웃 되었습니다.');
-            navigate('/login');
-        })
-        .catch((err) => {
-            console.error('로그아웃 에러:', err);
-        });
-    };
 
     useEffect(() => {
         if (!localStorage.getItem('token')) {
