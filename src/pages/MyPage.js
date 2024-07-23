@@ -19,7 +19,7 @@ function MyPage(){
             alert("로그인을 해주세요.");
             navigate('/login');
         } else {
-            axios.get('/user/mypage', {
+            axios.get('/auth/mypage', {
                 headers: {
                     Authorization: localStorage.getItem('token')
                 }
