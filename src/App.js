@@ -1,6 +1,5 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {  } from 'react-bootstrap'; 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AppNavbar from './components/AppNavbar';
 import Home from './pages/Home.js';
@@ -21,8 +20,8 @@ function App() {
           <Route path="/login" element={<Login/>}/>
           <Route path="/signUp" element={<SignUp/>}/>
           <Route path="/myPage" element={<MyPage/>}/>
-          <Route path="/postDetail/:id" element={<PostDetail/>}/> {/* 각 게시글 */}
-          <Route path="/edit" element={<Edit/>}/>
+          <Route path="/posts/:postId" element={<PostDetail/>}/> {/* 각 게시글 */}
+          <Route path="/posts/:postId/edit" element={<Edit/>}/> {/* 게시글 수정 */}
           <Route path="/write" element={<Write/>}/>
         </Routes>
       </BrowserRouter>

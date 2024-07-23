@@ -20,16 +20,17 @@ function SignUp() {
         if (!username || !password || !nickname || !email) {
             alert("입력 양식을 채워주세요.");
         } else {
-            axios.post('/auth/signup', newUser)
-                .then(() => {
-                    alert("회원가입이 완료되었습니다.");
-                    navigate('/mypage');
-                })
-                .catch(err => {
-                    console.error("회원가입 오류: ", err);
-                });
-        }
+             axios.defaults.baseURL = "http://localhost:8080"   // package.json에 proxy 설정해보고 setUpTests 파일에서 proxy 설정 따로 해봤는데 404 오류 뜨는 관계로 해당 코드 삽입
+             axios.post('/auth/signup', newUser)
+                 .then(() => {
+                     alert("회원가입이 완료되었습니다.");
+                     navigate('/mypage');
+                 })
+                 .catch(err => {
+                     console.error("회원가입 오류: ", err);
+                 });
     };
+}
 
     return (
         <>

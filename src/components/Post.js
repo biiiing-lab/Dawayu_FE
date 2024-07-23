@@ -23,7 +23,7 @@ function Post({ title, createdAt, username, content, likes, comments }) {
             console.error("좋아요 오류:", err);
         }
     };  /* 서버에서 좋아요 수를 가져오고 좋아요가 증가할 경우 서버로 데이터를 보내는 추가 로직 작성 필요.
-        이때 username이랑 좋아요 수를 보내면 되는지? */
+        이때 좋아요 수를 보내면 되는지? */
 
 
     return (

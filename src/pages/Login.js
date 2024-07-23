@@ -19,16 +19,7 @@ function Login() {
             return alert("비밀번호를 입력하세요.");
         }
 
-        fetch("/auth/login",{
-            method : "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body : JSON.stringify({
-                    username : username,
-                    password : password
-            })  // { username, password } 로 축약 가능
-        })
+        axios.post("/auth/login", { username, password })
         .then(res => res.json())
         .then(res => {
             console.log(res)

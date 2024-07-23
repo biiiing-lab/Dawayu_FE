@@ -1,6 +1,6 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
 
-let user = createSlice({
+let user = createSlice({    // 현재 로그인한 사용자
     name: "user",
     initialState: {
         username: ""
