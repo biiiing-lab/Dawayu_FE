@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import axios from 'axios';
 import Comments from './Comments';
 import { useSelector } from "react-redux";
-import postDeleteFunc from "../functions/postDeleteFunc";
+import usePostDeleteFunc from "../functions/postDeleteFunc";
 
 function Post({ title, createdAt, username, content, likes, comments }) {
     const [totalLikes, setTotalLikes] = useState(likes);
@@ -34,7 +34,7 @@ function Post({ title, createdAt, username, content, likes, comments }) {
             <Link to={`/posts/${postId}/edit`}>
                 <button>수정</button>
             </Link>
-            <button onClick={postDeleteFunc}>삭제</button>
+            <button onClick={usePostDeleteFunc}>삭제</button>
             <hr />
             <p>{content}</p>
             <h6 onClick={handleLike}>좋아요 {totalLikes} </h6>

@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const postDeleteFunc = async () => {
+const usePostDeleteFunc = async () => {
     const navigate = useNavigate();
     const { postId } = useParams();
 
@@ -18,4 +18,4 @@ const postDeleteFunc = async () => {
     }
 };
 
-export default postDeleteFunc;
+export default usePostDeleteFunc;
