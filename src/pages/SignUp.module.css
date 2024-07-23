@@ -1,0 +1,14 @@
+.signUp-form {  /* .form 으로 적용하니 다른 css 파일에 적용한 form 태그에 우선 순위 밀려서 스타일 적용 안 됨 */
+    margin: 0 200px;
+}
+
+.title {
+    display: flex;
+    justify-content: first baseline;
+    margin-left: 10px;
+}
+
+.h2 {
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
