@@ -20,7 +20,10 @@ function SignUp() {
         if (!username || !password || !nickname || !email) {
             alert("입력 양식을 채워주세요.");
         } else {
-             axios.defaults.baseURL = "http://localhost:8080"   // package.json에 proxy 설정해보고 setUpTests 파일에서 proxy 설정 따로 해봤는데 404 오류 뜨는 관계로 해당 코드 삽입
+             /* package.json에 proxy 설정해보고 setUpTests 파일에서 proxy 설정 따로 해봤는데 404 오류 뜨는 관계로 해당 코드 삽입
+             여전히 403 오류가 뜨긴 하지만 콘솔에서 localhost:8080 주소는 올바르게 뜨는 듯?
+             그렇다면 이 코드를 axios에 전체적으로 적용해야 하는 건지도 의문 */
+             axios.defaults.baseURL = "http://localhost:8080"
              axios.post('/auth/signup', newUser)
                  .then(() => {
                      alert("회원가입이 완료되었습니다.");
