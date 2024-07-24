@@ -8,8 +8,7 @@ import { useNavigate } from "react-router-dom";
 import LogoutFunc from "../functions/LogoutFunc";
 
 function MyPage(){
-    const user = useSelector((state) => state.user);
-    const userInfo = useSelector((state) => state.userInfo);
+    const info = useSelector((state) => state.userInfo);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -21,7 +20,7 @@ function MyPage(){
         } else {
             axios.get('http://localhost:8080/auth/mypage', {
                 headers: {
-                    Authorization: localStorage.getItem('message')
+                     Authorization: `Bearer ${localStorage.getItem('message')}`
                 }
             })
             .then((res) => {
@@ -36,8 +35,8 @@ function MyPage(){
 
     return (
         <>
-          <h2 className={styles.h2}>My Page</h2>
-          <p>{user.username}님, 안녕하세요!</p>
+          {/* <h2 className={styles.h2}>My Page</h2>
+          <p>{user.username}님, 안녕하세요!</p> */}
           <Tabs
             defaultActiveKey="profile"
             id="justify-tab-example"
@@ -45,21 +44,21 @@ function MyPage(){
             justify
           >
             <Tab eventKey="home" title="작성한 글">
-                {userInfo.posts.map((post, index) => (
+                {(info.posts && info.posts.length > 0) ? info.posts.map((post, index) => (
                     <div key={index}>
                         <h5>{post.title}</h5>
-                        <p>{post.createdAt}</p>
+                        <p>{new Date(post.createdAt).toLocaleString()}</p>
                         <hr />
                     </div>
-                ))}
+                )) : <p>작성한 글이 없습니다.</p>}
             </Tab>
             <Tab eventKey="profile" title="좋아요 한 글">
-                {userInfo.likedPosts.map((post, index) => (
+                {(info.likedPosts && info.likedPosts.length > 0) ? info.likedPosts.map((like, index) => (
                     <div key={index}>
-                        <h5>{post.title}</h5>
+                        <h5>{like.title}</h5>
                         <hr />
                     </div>
-                ))}
+                )) : <p>좋아요 한 글이 없습니다.</p>}
             </Tab>
           </Tabs>
           <LogoutFunc />

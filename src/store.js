@@ -65,18 +65,21 @@ export let { getPostDetail } = postDetail.actions
 
 let userInfo = createSlice({
     name: "userInfo",
-    initialState: { posts: [], likedPosts: [] },
+    initialState: {
+        posts: [],
+        likedPosts: []
+    },
     reducers: {
         addPosts(state, action){
-            state.posts = [...state.posts, action.payload]  // 파라미터에 이름 배열 등 보내주기?
+            state.posts = action.payload;
         },
         addLikedPosts(state, action){
-            state.likedPosts = [...state.likedPosts, action.payload]
+            state.likedPosts = action.payload;
         }
     }      
 })
 
-export let { addPosts, addLikedPosts } = userInfo.actions
+export let { addPosts, addLikedPosts } = userInfo.actions;
 
 export default configureStore({
   reducer: { 
