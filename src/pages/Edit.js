@@ -11,7 +11,7 @@ function Edit() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!localStorage.getItem('token')) {
+        if (!localStorage.getItem('message')) {
             alert("로그인을 해주세요.")
             navigate('/login')
         } else {
@@ -32,7 +32,7 @@ function Edit() {
             content: post.content
         },
         { headers: {
-            Authorization: localStorage.getItem('token'),
+            Authorization: localStorage.getItem('message'),
         }
         }).then(() => {
             alert("게시물 수정이 완료되었습니다.")

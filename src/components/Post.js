@@ -13,7 +13,7 @@ function Post({ title, createdAt, username, content, likesCount, comments, postN
         try {
             await axios.post(`/posts/${postNo}/like`, null, {
                 headers: {
-                    Authorization: localStorage.getItem('token'),
+                    Authorization: localStorage.getItem('message'),
                   }
             });
         } catch (err) {

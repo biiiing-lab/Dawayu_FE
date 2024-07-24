@@ -8,7 +8,7 @@ const usePostDeleteFunc = async () => {
     try {
         await axios.delete(`/posts/${postId}`, {
             headers: {
-                Authorization: localStorage.getItem('token')
+                Authorization: localStorage.getItem('message')
             },
         });
         alert('게시물이 삭제되었습니다.');

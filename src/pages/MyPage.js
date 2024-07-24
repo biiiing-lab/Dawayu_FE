@@ -15,13 +15,13 @@ function MyPage(){
 
 
     useEffect(() => {
-        if (!localStorage.getItem('token')) {
+        if (!localStorage.getItem('message')) {
             alert("로그인을 해주세요.");
             navigate('/login');
         } else {
             axios.get('http://localhost:8080/auth/mypage', {
                 headers: {
-                    Authorization: localStorage.getItem('token')
+                    Authorization: localStorage.getItem('message')
                 }
             })
             .then((res) => {
@@ -62,7 +62,7 @@ function MyPage(){
                 ))}
             </Tab>
           </Tabs>
-          <button onClick={LogoutFunc}>로그아웃</button>
+          <LogoutFunc />
         </>
     );
 }

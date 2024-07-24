@@ -11,7 +11,7 @@ function Comments({ comments, postNo, setComments }){
         try {
             const res = await axios.post(`http://localhost:8080/posts/${postNo}/comments`, { content }, {
                 headers: {
-                    Authorization: localStorage.getItem('token'),
+                    Authorization: localStorage.getItem('message'),
                   }
             });
 
@@ -32,7 +32,7 @@ function Comments({ comments, postNo, setComments }){
                 }} 
             />
             <button onClick={() => {
-                if (!localStorage.getItem("token")) {
+                if (!localStorage.getItem("message")) {
                     alert("로그인이 필요합니다.");
                 } else if (!isValid) {
                     alert("댓글을 한 글자 이상 입력하세요.");

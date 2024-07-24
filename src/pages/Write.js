@@ -13,7 +13,7 @@ function Write(){
     const publish = () => {
         axios.post('http://localhost:8080/posts', post, {
             headers: {
-                Authorization: localStorage.getItem('token')
+                Authorization: localStorage.getItem('message')
             }
         })
         .then((res) => {
@@ -26,7 +26,7 @@ function Write(){
     };
 
     useEffect(() => {
-        if (!localStorage.getItem('token')) {
+        if (!localStorage.getItem('message')) {
             alert("로그인을 해주세요.");
             navigate('/login');
         } else {

@@ -1,26 +1,22 @@
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { clearUser } from "../store";
+import { clearUser } from '../store';
 
 const LogoutFunc = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    axios.post('/auth/logout', {
-        headers: {
-            Authorization: localStorage.getItem('token'),
-        },
-    })
-    .then(() => {
+    // 토큰 제거 및 상태 업데이트
+    const handleLogout = () => {
         dispatch(clearUser());
-        localStorage.removeItem("token");
+        localStorage.removeItem("message");
         alert('로그아웃 되었습니다.');
         navigate('/login');
-    })
-    .catch((err) => {
-        console.error('로그아웃 에러:', err);
-    });
+    };
+
+    return (
+        <button onClick={handleLogout}>로그아웃</button>
+    );
 };
 
 export default LogoutFunc;

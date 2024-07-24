@@ -32,7 +32,7 @@ function Login() {
         .then(res => res.json())
         .then(res => {
             console.log(res)
-            localStorage.setItem('token', res.access_token);
+            localStorage.setItem('message', res.message);
             dispatch(loginUser({userId}));
             alert("로그인 되었습니다.");
             navigate("/Home");
