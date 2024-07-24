@@ -8,6 +8,7 @@ import Edit from "../pages/Edit";
 
 function Post({ title, createdAt, username, content, likesCount, comments, postNo }) {
     const userName = useSelector((state) => state.user);
+    const deletePost = usePostDeleteFunc();
 
     const handleLike = async () => {
         try {
@@ -32,7 +33,7 @@ function Post({ title, createdAt, username, content, likesCount, comments, postN
             <Link to={`/posts/${postNo}/edit`}> 
                 <button>수정</button> 
             </Link>
-            <button onClick={usePostDeleteFunc}>삭제</button>
+            <button onClick={() => deletePost(postNo)}>삭제</button>
             <hr />
             <p>{content}</p>
             <h6 onClick={handleLike}>좋아요 </h6>
