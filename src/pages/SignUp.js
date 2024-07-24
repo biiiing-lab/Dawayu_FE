@@ -6,34 +6,30 @@ import { useNavigate } from "react-router-dom";
 
 function SignUp() {
     const [newUser, setNewUser] = useState({
-        username: "",
+        userId: "",
         password: "",
-        nickname: "",
+        nickName: "",
         email: ""
     });
     const navigate = useNavigate();
 
     const createUser = (e) => {
         e.preventDefault();  // 기본 폼 제출 이벤트 방지
-        const { username, password, nickname, email } = newUser;
+        const { userId, password, nickName, email } = newUser;
 
-        if (!username || !password || !nickname || !email) {
+        if (!userId || !password || !nickName || !email) {
             alert("입력 양식을 채워주세요.");
         } else {
-             /* package.json에 proxy 설정해보고 setUpTests 파일에서 proxy 설정 따로 해봤는데 404 오류 뜨는 관계로 해당 코드 삽입
-             여전히 403 오류가 뜨긴 하지만 콘솔에서 localhost:8080 주소는 올바르게 뜨는 듯?
-             그렇다면 이 코드를 axios에 전체적으로 적용해야 하는 건지도 의문 */
-             axios.defaults.baseURL = "http://localhost:8080"
-             axios.post('/auth/signup', newUser)
-                 .then(() => {
-                     alert("회원가입이 완료되었습니다.");
-                     navigate('/mypage');
-                 })
-                 .catch(err => {
-                     console.error("회원가입 오류: ", err);
-                 });
+            axios.post('http://localhost:8080/auth/signup', newUser)
+                .then(() => {
+                    alert("회원가입이 완료되었습니다.");
+                    navigate('/login');
+                })
+                .catch(err => {
+                    console.error("회원가입 오류: ", err);
+                });
+        }
     };
-}
 
     return (
         <>
@@ -43,8 +39,8 @@ function SignUp() {
                     <Form.Label className={styles.title}>아이디</Form.Label>
                     <Form.Control 
                         placeholder="아이디를 입력하세요"
-                        value={newUser.username}
-                        onChange={(e) => setNewUser({ ...newUser, username: e.target.value })}
+                        value={newUser.userId}
+                        onChange={(e) => setNewUser({ ...newUser, userId: e.target.value })}
                     />
                 </Form.Group>
 
@@ -62,8 +58,8 @@ function SignUp() {
                     <Form.Label className={styles.title}>닉네임</Form.Label>
                     <Form.Control 
                         placeholder="닉네임을 입력하세요"
-                        value={newUser.nickname}
-                        onChange={(e) => setNewUser({ ...newUser, nickname: e.target.value })}
+                        value={newUser.nickName}
+                        onChange={(e) => setNewUser({ ...newUser, nickName: e.target.value })}
                     />
                 </Form.Group>
 
