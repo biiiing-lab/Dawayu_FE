@@ -5,7 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { changeTitle, changeContent } from '../store';
 
 function Edit() {
-    const { postId } = useParams();
+    const { postNo } = useParams();
     const post = useSelector((state) => state.post);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -15,7 +15,11 @@ function Edit() {
             alert("로그인을 해주세요.")
             navigate('/login')
         } else {
-        axios.get(`http://localhost:8080/posts/${postId}`)
+            axios.get(`http://localhost:8080/posts/${postNo}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('message')}`
+                }
+            })
             .then((response) => {
                 const { title, content } = response.data;
                 dispatch(changeTitle(title));
@@ -24,19 +28,19 @@ function Edit() {
             .catch((error) => {
                 console.error('게시물 가져오기 오류:', error);
             });
-    }}, []);
+    }}, [postNo, dispatch, navigate]);
 
     const publish = () => {
-        axios.put(`http://localhost:8080/posts/${postId}`, {
+        axios.put(`http://localhost:8080/posts/${postNo}`, {
             title: post.title,
             content: post.content
         },
         { headers: {
-            Authorization: localStorage.getItem('message'),
+             Authorization: `Bearer ${localStorage.getItem('message')}`
         }
         }).then(() => {
             alert("게시물 수정이 완료되었습니다.")
-            navigate(`http://localhost:8080/posts/${postId}`);
+            navigate(`/posts/${postNo}`);
         }).catch((error) => {
             console.error('게시물 수정 오류:', error);
         });

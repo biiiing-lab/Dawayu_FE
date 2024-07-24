@@ -22,7 +22,7 @@ function App() {
           <Route path="/signUp" element={<SignUp/>}/>
           <Route path="/myPage" element={<MyPage/>}/>
           <Route path="/posts/:postNo" element={<PostDetail/>}/> {/* 각 게시글 */}
-          <Route path="/edit" element={<Edit/>}/>
+          <Route path="/posts/:postNo/edit" element={<Edit/>}/>
           <Route path="/write" element={<Write/>}/>
         </Routes>
       </BrowserRouter>

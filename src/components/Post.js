@@ -4,9 +4,9 @@ import axios from 'axios';
 import Comments from './Comments';
 import { useSelector } from "react-redux";
 import usePostDeleteFunc from "../functions/postDeleteFunc";
+import Edit from "../pages/Edit";
 
 function Post({ title, createdAt, username, content, likesCount, comments, postNo }) {
-    const [totalLikes, setTotalLikes] = useState(likesCount);
     const userName = useSelector((state) => state.user);
 
     const handleLike = async () => {
@@ -28,6 +28,7 @@ function Post({ title, createdAt, username, content, likesCount, comments, postN
             <h2>{title}</h2>
             <h5>{username}</h5>
             <p>{createdAt}</p>
+            <p>{likesCount}</p>
             <Link to={`/posts/${postNo}/edit`}> 
                 <button>수정</button> 
             </Link>

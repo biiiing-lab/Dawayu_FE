@@ -13,12 +13,12 @@ function Write(){
     const publish = () => {
         axios.post('http://localhost:8080/posts', post, {
             headers: {
-                Authorization: localStorage.getItem('message')
+                 Authorization: `Bearer ${localStorage.getItem('message')}`
             }
         })
         .then((res) => {
-            const postId = res.data.postId;
-            navigate(`http://localhost:8080/posts/${postId}`);
+            const postNo = res.data.postNo;
+            navigate(`/Home`);
         })
         .catch(error => {
             console.error('게시물 발행 오류:', error);
