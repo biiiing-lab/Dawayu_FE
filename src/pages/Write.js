@@ -11,14 +11,14 @@ function Write(){
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const publish = () => {
-        axios.post('/posts', post, {
+        axios.post('http://localhost:8080/posts', post, {
             headers: {
                 Authorization: localStorage.getItem('token')
             }
         })
         .then((res) => {
             const postId = res.data.postId;
-            navigate(`posts/${postId}`);
+            navigate(`http://localhost:8080/posts/${postId}`);
         })
         .catch(error => {
             console.error('게시물 발행 오류:', error);

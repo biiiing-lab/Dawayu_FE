@@ -15,7 +15,7 @@ function Edit() {
             alert("로그인을 해주세요.")
             navigate('/login')
         } else {
-        axios.get(`/posts/${postId}`)
+        axios.get(`http://localhost:8080/posts/${postId}`)
             .then((response) => {
                 const { title, content } = response.data;
                 dispatch(changeTitle(title));
@@ -27,7 +27,7 @@ function Edit() {
     }}, []);
 
     const publish = () => {
-        axios.put(`/posts/${postId}`, {
+        axios.put(`http://localhost:8080/posts/${postId}`, {
             title: post.title,
             content: post.content
         },
@@ -36,7 +36,7 @@ function Edit() {
         }
         }).then(() => {
             alert("게시물 수정이 완료되었습니다.")
-            navigate(`/posts/${postId}`);
+            navigate(`http://localhost:8080/posts/${postId}`);
         }).catch((error) => {
             console.error('게시물 수정 오류:', error);
         });
