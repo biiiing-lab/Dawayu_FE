@@ -31,12 +31,10 @@ function MyPage(){
                 console.error('데이터 가져오기 에러:', err);
             });
         }
-    }, [navigate, dispatch]);
+    }, []);
 
     return (
         <>
-          {/* <h2 className={styles.h2}>My Page</h2>
-          <p>{user.username}님, 안녕하세요!</p> */}
           <Tabs
             defaultActiveKey="profile"
             id="justify-tab-example"
