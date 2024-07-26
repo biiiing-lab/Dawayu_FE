@@ -24,10 +24,10 @@ function Home() {
         <>
             {postsList.map((post, i) => ( // 각 게시물에 대해 링크를 생성
                 <div key={i}>
-                    <Link to={`/posts/${post.postNo}`}>{post.title}</Link> {/* 게시물의 postId를 반영 */}
-                    <p>{post.createdAt}</p>
-                    <p>{post.username}</p>
-                    <p>{post.likeCount}</p>
+                    <Link to={`/posts/${post.postNo}`}><h5>{post.title}</h5></Link> {/* 게시물의 postId를 반영 */}
+                    <p>{new Date(post.createdAt).toLocaleDateString()}</p>
+                    <h6>{post.username}</h6>
+                    <p>좋아요 {post.likeCount}</p>
                     <hr />
                 </div>
             ))}
