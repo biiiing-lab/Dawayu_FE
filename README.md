@@ -25,7 +25,7 @@ https://github.com/biiiing-lab/Dawayu_BE.git
 ### skills
 
 #### FE
-- Hhml, CSS, JS
+- Html, CSS, JS
 - React
 
 #### BE
