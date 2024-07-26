@@ -3,14 +3,14 @@ import { configureStore, createSlice } from '@reduxjs/toolkit'
 let user = createSlice({    // 현재 로그인한 사용자
     name: "user",
     initialState: {
-        username: ""
+        userId: "",
     },
     reducers: {
        loginUser(state, action){
-        state.username = action.payload.username;
+        state.userId = action.payload;
        },
        clearUser(state){
-        state.username = "";
+        state.userId = "";
        }
     }
 });
@@ -46,7 +46,7 @@ let postDetail = createSlice({
         createdAt: '',
         username: '',
         content: '',
-        likes: 0,
+        likesCount: 0,
         comments: []
     },
     reducers: {
@@ -55,7 +55,7 @@ let postDetail = createSlice({
             state.createdAt = action.payload.createdAt;
             state.username = action.payload.username;
             state.content = action.payload.content;
-            state.likes = action.payload.likes;
+            state.likesCount = action.payload.likesCount;
             state.comments = action.payload.comments;
            }
         }
@@ -80,6 +80,7 @@ let userInfo = createSlice({
 })
 
 export let { addPosts, addLikedPosts } = userInfo.actions;
+
 
 export default configureStore({
   reducer: { 
