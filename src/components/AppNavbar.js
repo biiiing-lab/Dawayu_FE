@@ -10,10 +10,14 @@ function AppNavbar(){
     return (
         <Navbar bg="light" data-bs-theme="light">
             <Container>
-          <Navbar.Brand className={styles.title} onClick={() => { navigate('/') }}>다와유</Navbar.Brand>
+          <Navbar.Brand className={styles.title} onClick={() => { navigate('/home') }}>다와유</Navbar.Brand>
           <Nav className="menu">
-            <Nav.Link onClick={() => { navigate('/login') }}>로그인</Nav.Link>
-            <Nav.Link onClick={() => { navigate('/signUp') }}>회원가입</Nav.Link>
+            { !token ? (
+              <>
+              <Nav.Link onClick={() => { navigate('/login') }}>로그인</Nav.Link>
+              <Nav.Link onClick={() => { navigate('/signUp') }}>회원가입</Nav.Link>
+              </>
+            ) : null }
             { token ? (
                 <>
                 <Nav.Link onClick={() => { navigate('/myPage') }}>마이페이지</Nav.Link>
