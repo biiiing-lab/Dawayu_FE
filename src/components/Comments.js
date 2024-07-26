@@ -7,20 +7,20 @@ function Comments({ comments, postNo, setComments }){
     const [content, setContent] = useState("");
     const [isValid, setIsValid] = useState(false);  // 댓글이 공백이 아닌지 유효성 검사
 
-    const postComment = async () => {   // 댓글 발행 함수. 여기서 response로 받은 commentId를 어떻게 활용해야 하는지 모르겠다
+    const postComment = async () => {
         try {
-            const res = await axios.post(`http://localhost:8080/posts/${postNo}/comments`, { content }, {
+            const res = await axios.post(`http://localhost:8080/posts/${postNo}/comments`, {content}, {
                 headers: {
-                    Authorization: localStorage.getItem('message'),
+                    Authorization: `Bearer ${localStorage.getItem('message')}`,
                   }
             });
-
-            (alert("댓글이 작성되었습니다."))
+            alert("댓글이 작성되었습니다.")
             setComments([...comments, res.data]); // 새로운 댓글을 기존 목록에 추가
         } catch (err) {
             console.error("댓글 작성 오류:", err);
         }
     };
+
     return (
         <div>
             <input 
