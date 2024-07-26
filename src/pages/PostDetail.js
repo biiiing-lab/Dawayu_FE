@@ -27,7 +27,7 @@ function PostDetail() {
         if (postNo) {
             getPost();
         }
-    }, [postNo, dispatch]);
+    }, []);
 
     return (
         
